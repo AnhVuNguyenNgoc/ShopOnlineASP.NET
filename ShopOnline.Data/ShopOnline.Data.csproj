@@ -46,7 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201802100453244_InitialDB.cs" />
+    <Compile Include="Migrations\201802100453244_InitialDB.Designer.cs">
+      <DependentUpon>201802100453244_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802100507118_FixDB.cs" />
+    <Compile Include="Migrations\201802100507118_FixDB.Designer.cs">
+      <DependentUpon>201802100507118_FixDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ProductCategoryRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="ShopOnlineDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -57,6 +76,18 @@
       <Project>{8bc8800b-0d0d-492f-92ac-e9342f94186e}</Project>
       <Name>ShopOnline.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShopOnline.Model\ShopOnline.Model.csproj">
+      <Project>{dd73905a-bb5b-41bc-a183-7144574e6714}</Project>
+      <Name>ShopOnline.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802100453244_InitialDB.resx">
+      <DependentUpon>201802100453244_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802100507118_FixDB.resx">
+      <DependentUpon>201802100507118_FixDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
