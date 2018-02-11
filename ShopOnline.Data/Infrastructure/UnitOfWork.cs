@@ -11,6 +11,7 @@ namespace ShopOnline.Data.Infrastructure
         public UnitOfWork(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory;
+           
         }
 
         //getter
@@ -18,6 +19,7 @@ namespace ShopOnline.Data.Infrastructure
         {
             //this is the most important code line
 
+            //not null thì trả về dbContext còn null thì khởi tạo
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
 
         }

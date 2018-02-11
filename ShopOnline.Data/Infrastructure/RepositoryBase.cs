@@ -41,6 +41,7 @@ namespace ShopOnline.Data.Infrastructure
 
 
         #region Implementation
+        // virtual usually use in base class . if it is good enough, use this method, if not, then override me, and provide your own functionality.
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
@@ -62,6 +63,13 @@ namespace ShopOnline.Data.Infrastructure
 
         public virtual void Delete(T entity)
         {
+            dbSet.Remove(entity);
+        }
+
+        public virtual void Delete(int id)
+        {
+            var entity = dbSet.Find(id);
+
             dbSet.Remove(entity);
         }
 

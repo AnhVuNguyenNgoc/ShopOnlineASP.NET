@@ -45,6 +45,11 @@ namespace ShopOnline.Model.Models
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategories { get; set; }
 
-        //public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
+
+        //for mapping object . not relating to generate database
+
+        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
+
+       
     }
 }

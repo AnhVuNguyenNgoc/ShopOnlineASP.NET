@@ -38,5 +38,7 @@ namespace ShopOnline.Model.Models
         public virtual PostCategory PostCategories { get; set; }
 
 
+        public virtual IEnumerable<PostTag> PostTags { get; set; }
+
     }
 }

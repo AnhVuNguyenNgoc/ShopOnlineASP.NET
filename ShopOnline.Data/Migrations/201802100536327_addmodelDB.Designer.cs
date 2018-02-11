@@ -7,13 +7,13 @@ namespace ShopOnline.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class FixDB : IMigrationMetadata
+    public sealed partial class addmodelDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addmodelDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802100507118_FixDB"; }
+            get { return "201802100536327_addmodelDB"; }
         }
         
         string IMigrationMetadata.Source

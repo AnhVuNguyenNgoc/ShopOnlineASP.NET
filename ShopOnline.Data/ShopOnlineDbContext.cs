@@ -19,6 +19,10 @@ namespace ShopOnline.Data
          * override OnModelCreating
          */
 
+        //create new table in migration 
+        //->>>>>>>>>>...create new dbset
+
+
 
         public DbSet<Footer> Footers { set; get; }
         public DbSet<Menu> Menus { set; get; }
@@ -28,7 +32,7 @@ namespace ShopOnline.Data
         //public DbSet<Page> Pages { set; get; }
         public DbSet<Post> Posts { set; get; }
         public DbSet<PostCategory> PostCategories { set; get; }
-       // public DbSet<PostTag> PostTags { set; get; }
+        public DbSet<PostTag> PostTags { set; get; }
         public DbSet<Product> Products { set; get; }
 
         public DbSet<ProductCategory> ProductCategories { set; get; }
@@ -37,7 +41,7 @@ namespace ShopOnline.Data
         //public DbSet<SupportOnline> SupportOnlines { set; get; }
         //public DbSet<SystemConfig> SystemConfigs { set; get; }
 
-        //public DbSet<Tag> Tags { set; get; }
+        public DbSet<Tag> Tags { set; get; }
 
         //public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
 

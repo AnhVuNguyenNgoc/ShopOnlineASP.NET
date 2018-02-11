@@ -4,6 +4,12 @@ using System.Linq.Expressions;
 
 namespace ShopOnline.Data.Infrastructure
 {
+    /*
+     Một nơi duy nhất để thay đổi quyền truy cập dữ liệu cũng như xử lý dữ liệu.
+    Một nơi duy nhất chịu trách nhiệm cho việc mapping các bảng vào object.
+    Tăng tính bảo mật và rõ ràng cho code.
+    Rất dễ dàng để thay thế một Repository với một implementation giả cho việc testing, vì vậy bạn không cần chuẩn bị một cơ sở dữ liệu có sẵn.
+     */
     public interface IRepository<T> where T : class
     {
         // Marks an entity as new
@@ -14,6 +20,10 @@ namespace ShopOnline.Data.Infrastructure
 
         // Marks an entity to be removed
         void Delete(T entity);
+
+        // Marks an entity to be removed
+        void Delete(int id);
+
 
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);// Func<> DELEGATE

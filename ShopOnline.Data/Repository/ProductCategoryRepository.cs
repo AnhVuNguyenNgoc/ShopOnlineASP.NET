@@ -7,7 +7,7 @@ using System.Linq;
 namespace ShopOnline.Data.Repository
 {
     //nghiep vu moi thi them vao interface nay 
-   public interface IProductCategoryRepository
+   public interface IProductCategoryRepository:IRepository<ProductCategory>
     {
         IEnumerable<ProductCategory> GetAlias(string alias);
     }

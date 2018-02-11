@@ -6,7 +6,7 @@ using System.Linq;
 namespace ShopOnline.Data.Repository
 {
     //nghiep vu moi thi them vao interface nay 
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     {
         IEnumerable<Product> GetAlias(string alias);
     }
@@ -18,7 +18,7 @@ namespace ShopOnline.Data.Repository
         {
 
         }
-
+        
         public IEnumerable<Product> GetAlias(string alias)
         {
             return this.DbContext.Products.Where(x => x.Alias == alias);
