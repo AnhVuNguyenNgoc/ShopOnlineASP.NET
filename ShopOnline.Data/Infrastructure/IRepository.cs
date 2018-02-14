@@ -13,7 +13,7 @@ namespace ShopOnline.Data.Infrastructure
     public interface IRepository<T> where T : class
     {
         // Marks an entity as new
-        void Add(T entity);
+        T Add(T entity);
 
         // Marks an entity as modified
         void Update(T entity);

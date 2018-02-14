@@ -9,7 +9,7 @@ namespace ShopOnline.Service
    public interface IPostCategoryService
     {
     
-        void Add(PostCategory postCategory);
+        PostCategory Add(PostCategory postCategory);
         void Update(PostCategory postCategory);
         void Delete(int id);
         IEnumerable<PostCategory> GetAll();
@@ -35,9 +35,9 @@ namespace ShopOnline.Service
         }
 
 
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            _postCategoryRepository.Add(postCategory);
+           return _postCategoryRepository.Add(postCategory);
         }
 
         public void Delete(int id)
@@ -63,6 +63,12 @@ namespace ShopOnline.Service
         public void Update(PostCategory postCategory)
         {
             _postCategoryRepository.Update(postCategory);
+        }
+
+
+        public void SaveChanges()
+        {
+            _unitOfWork.Commit();
         }
     }
 }

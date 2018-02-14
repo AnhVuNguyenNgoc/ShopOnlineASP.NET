@@ -10,13 +10,15 @@ namespace ShopOnline.Service
 {
     public interface IPostService
     {
-        void Add(Post product);
+        Post Add(Post product);
+
+
         void Update(Post product);
         void Delete(int id);
         IEnumerable<Post> GetAll();
-        IEnumerable<Post> GetAllPaging(int page, int pagesize, int totalRow);
+        IEnumerable<Post> GetAllPaging(int page, int pagesize,out int totalRow);
         Post GetById(int id);
-        IEnumerable<Post> GetAllByTagPaging(int tag, int page, int pagesize, int totalRow);
+        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pagesize,out int totalRow);
         void SaveChanges();
     }
 
@@ -32,9 +34,9 @@ namespace ShopOnline.Service
         }
 
 
-        public void Add(Post product)
+        public Post Add(Post product)
         {
-            _postRepository.Add(product);
+            return _postRepository.Add(product);
         }
 
         public void Update(Post product)
@@ -49,7 +51,7 @@ namespace ShopOnline.Service
 
         public IEnumerable<Post> GetAll()
         {
-            return _postRepository.GetAll(new string[] { "PostTags" });
+            return _postRepository.GetAll();
         }
 
     

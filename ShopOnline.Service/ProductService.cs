@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace ShopOnline.Service
 {
-    interface IProductService
+   public interface IProductService
     {
         void Add(Product product);
         void Update(Product product);
@@ -61,10 +61,10 @@ namespace ShopOnline.Service
             throw new System.NotImplementedException();
         }
 
-        //public IEnumerable<Product> GetAllByTagPaging(int tag, int page, int pagesize, int totalRow)
-        //{
-        //    return _productRepository.GetMultiPaging(x => x.Status && x.Post );
-        //}
+        public IEnumerable<Product> GetAllByTagPaging(int tag, int page, int pagesize, int totalRow)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public void SaveChanges()
         {

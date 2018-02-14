@@ -42,9 +42,9 @@ namespace ShopOnline.Data.Infrastructure
 
         #region Implementation
         // virtual usually use in base class . if it is good enough, use this method, if not, then override me, and provide your own functionality.
-        public virtual void Add(T entity)
+        public virtual T Add(T entity)
         {
-            dbSet.Add(entity);
+            return dbSet.Add(entity);
         }
         /*
          

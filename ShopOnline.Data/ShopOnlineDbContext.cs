@@ -5,7 +5,8 @@ namespace ShopOnline.Data
 {
     public class ShopOnlineDbContext : DbContext
     {
-        public ShopOnlineDbContext(): base("ShopOnlineConnection")
+        public ShopOnlineDbContext()
+            : base("ShopConnection")
         {
             this.Configuration.LazyLoadingEnabled = false;
             //bảng cha tự động include bảng con
@@ -45,7 +46,7 @@ namespace ShopOnline.Data
 
         //public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
 
-
+       public DbSet<Error> Pages { set; get; }
         //Why we need override in here 
 
         //If we dont use it ? What happen ?  **********

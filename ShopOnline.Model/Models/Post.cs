@@ -12,9 +12,10 @@ namespace ShopOnline.Model.Models
     [Table("Posts")]
     public class Post : Auditable
     {
+      
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int ID { set; get; }
         [Required]
         [MaxLength(256)]
         public string Name { get; set; }
@@ -37,8 +38,6 @@ namespace ShopOnline.Model.Models
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategories { get; set; }
 
-
-        public virtual IEnumerable<PostTag> PostTags { get; set; }
 
     }
 }
