@@ -1,0 +1,17 @@
+{
+  "name": "ShopOnline.Web",
+  "homepage": "https://github.com/AnhVuNguyenNgoc/ShopOnlineASP.NET",
+  "authors": [
+    "phu-PC\\phu <anhvu010197@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
