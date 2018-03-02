@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace ShopOnline.Web.API
 {
-     [RoutePrefix("API/Post")]
+     [RoutePrefix("api/post")]
     public class PostController : ApiControllerBase
     {
         IPostService _postService;

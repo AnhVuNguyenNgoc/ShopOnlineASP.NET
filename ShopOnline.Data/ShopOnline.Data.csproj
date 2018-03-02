@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201802141617432_fixDB.Designer.cs">
       <DependentUpon>201802141617432_fixDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802230339007_fixViewPropInPost.cs" />
+    <Compile Include="Migrations\201802230339007_fixViewPropInPost.Designer.cs">
+      <DependentUpon>201802230339007_fixViewPropInPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ErrorRepository.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802141617432_fixDB.resx">
       <DependentUpon>201802141617432_fixDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802230339007_fixViewPropInPost.resx">
+      <DependentUpon>201802230339007_fixViewPropInPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

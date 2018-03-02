@@ -11,8 +11,6 @@ namespace ShopOnline.Service
     public interface IPostService
     {
         Post Add(Post product);
-
-
         void Update(Post product);
         void Delete(int id);
         IEnumerable<Post> GetAll();
@@ -32,7 +30,6 @@ namespace ShopOnline.Service
             _postRepository = postRepository;
             _unitOfWork = unitOfWork;
         }
-
 
         public Post Add(Post product)
         {

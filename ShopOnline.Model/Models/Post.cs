@@ -33,7 +33,7 @@ namespace ShopOnline.Model.Models
 
         public bool? HomeFlag { get; set; }
         public bool? HotFlag { get; set; }
-        public bool? ViewCount { get; set; }
+        public int? ViewCount { get; set; }
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategories { get; set; }

@@ -48,6 +48,9 @@
     <Reference Include="Autofac.Integration.WebApi">
       <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -154,6 +157,7 @@
   <ItemGroup>
     <Compile Include="API\PostCategoryController.cs" />
     <Compile Include="API\PostController.cs" />
+    <Compile Include="API\ProductCategoryController.cs" />
     <Compile Include="API\ProductController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -166,20 +170,33 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
+    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\PostTagViewModel.cs" />
+    <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\PostCategoryViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModel.cs" />
+    <Compile Include="Models\ProductTagViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
-    <Content Include="app\components\products\product.modules.js" />
+    <Content Include="app\components\products\product.module.js" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
     <Content Include="app\components\products\productEditController.js" />
     <Content Include="app\components\products\productEditView.html" />
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
+    <Content Include="app\components\product_categories\productCategory.module.js" />
+    <Content Include="app\components\product_categories\productCategoriesListController.js" />
+    <Content Include="app\components\product_categories\productCategorytListView.html" />
     <Content Include="app\shared\modules\shoponline.common.js" />
+    <Content Include="app\shared\service\apiService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -216,13 +233,6 @@
     <Content Include="Assets\admin\css\skins\skin-yellow.min.css" />
     <Content Include="Assets\admin\css\skins\_all-skins.css" />
     <Content Include="Assets\admin\css\skins\_all-skins.min.css" />
-    <Content Include="Assets\admin\img\avatar.png" />
-    <Content Include="Assets\admin\img\avatar04.png" />
-    <Content Include="Assets\admin\img\avatar2.png" />
-    <Content Include="Assets\admin\img\avatar3.png" />
-    <Content Include="Assets\admin\img\avatar5.png" />
-    <Content Include="Assets\admin\img\boxed-bg.jpg" />
-    <Content Include="Assets\admin\img\boxed-bg.png" />
     <Content Include="Assets\admin\img\credit\american-express.png" />
     <Content Include="Assets\admin\img\credit\cirrus.png" />
     <Content Include="Assets\admin\img\credit\mastercard.png" />
@@ -230,20 +240,7 @@
     <Content Include="Assets\admin\img\credit\paypal.png" />
     <Content Include="Assets\admin\img\credit\paypal2.png" />
     <Content Include="Assets\admin\img\credit\visa.png" />
-    <Content Include="Assets\admin\img\default-50x50.gif" />
-    <Content Include="Assets\admin\img\icons.png" />
-    <Content Include="Assets\admin\img\photo1.png" />
-    <Content Include="Assets\admin\img\photo2.png" />
-    <Content Include="Assets\admin\img\photo3.jpg" />
-    <Content Include="Assets\admin\img\photo4.jpg" />
-    <Content Include="Assets\admin\img\user1-128x128.jpg" />
     <Content Include="Assets\admin\img\user2-160x160.jpg" />
-    <Content Include="Assets\admin\img\user3-128x128.jpg" />
-    <Content Include="Assets\admin\img\user4-128x128.jpg" />
-    <Content Include="Assets\admin\img\user5-128x128.jpg" />
-    <Content Include="Assets\admin\img\user6-128x128.jpg" />
-    <Content Include="Assets\admin\img\user7-128x128.jpg" />
-    <Content Include="Assets\admin\img\user8-128x128.jpg" />
     <Content Include="Assets\admin\js\adminlte.js" />
     <Content Include="Assets\admin\js\adminlte.min.js" />
     <Content Include="Assets\admin\js\demo.js" />
@@ -445,7 +442,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\order\" />
-    <Folder Include="app\components\product_categories\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="app\shared\directive\" />
@@ -453,8 +449,6 @@
     <Folder Include="app\shared\navigation\" />
     <Folder Include="App_Data\" />
     <Folder Include="Assets\client\" />
-    <Folder Include="Infrastructure\Extensions\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
