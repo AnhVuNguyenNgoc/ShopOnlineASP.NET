@@ -12,7 +12,17 @@
         $stateProvider.state('product_categories', {
             url: "/product_categories",
             templateUrl: "/app/components/product_categories/productCategorytListView.html",
-            controller: "productCategoriesListController"
+            controller: "productCategoryListController"
+        }).state('add_product_categories', {
+            url: "/add_product_categories",
+            templateUrl: "/app/components/product_categories/productCategoryAddView.html",
+            controller: "productCategoryAddController"
+        })
+            //Thêm tham số mới update dc nha 
+            .state('update_product_categories', {
+            url: "/update_product_categories/:id",
+            templateUrl: "/app/components/product_categories/productCategoryUpdateView.html",
+            controller: "productCategoryUpdateController"
         });
 
     }

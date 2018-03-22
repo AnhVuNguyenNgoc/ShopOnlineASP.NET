@@ -14,7 +14,10 @@ namespace ShopOnline.Service
         ProductCategory Add(ProductCategory productCategory);
         void Update(ProductCategory productCategory);
         void Delete(int id);
+
         IEnumerable<ProductCategory> GetAll();
+        //Tìm kiếm vs getall thông thường luôn . khỏi cần tách ra func search riêng chi 
+        IEnumerable<ProductCategory> GetAll(string keyWord);
 
         IEnumerable<ProductCategory> GetAllPaging(int page, int pagesize, out int totalRow);
         ProductCategory GetById(int id);
@@ -27,7 +30,7 @@ namespace ShopOnline.Service
         IProductCategoryRepository _productCategoryRepository;
         IUnitOfWork _unitOfWork;
 
-       //Dependency Injecttion by AutoFac
+        //Dependency Injecttion by AutoFac
         //
         public ProductCategoryService(IProductCategoryRepository productCategoryRepository, IUnitOfWork unitOfWork)
         {
@@ -43,19 +46,32 @@ namespace ShopOnline.Service
             return _productCategoryRepository.Add(productCategory);
         }
 
-        public void Update(ProductCategory product)
+        public void Update(ProductCategory productCategory)
         {
-            throw new NotImplementedException();
+             _productCategoryRepository.Update(productCategory);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _productCategoryRepository.Delete(id);
         }
 
         public IEnumerable<ProductCategory> GetAll()
         {
             return _productCategoryRepository.GetAll();
+
+        }
+        public IEnumerable<ProductCategory> GetAll(string keyWord)
+        {
+            if (!string.IsNullOrEmpty(keyWord))
+            {
+                return _productCategoryRepository.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord));
+            }
+            else
+            {
+                return _productCategoryRepository.GetAll();
+            }
+
         }
 
         public IEnumerable<ProductCategory> GetAllPaging(int page, int pagesize, out int totalRow)
@@ -65,7 +81,7 @@ namespace ShopOnline.Service
 
         public ProductCategory GetById(int id)
         {
-            throw new NotImplementedException();
+            return _productCategoryRepository.GetSingleById(id);
         }
 
         public IEnumerable<ProductCategory> GetAllByTagPaging(string tag, int page, int pagesize, out int totalRow)
@@ -75,7 +91,9 @@ namespace ShopOnline.Service
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
+
+
     }
 }

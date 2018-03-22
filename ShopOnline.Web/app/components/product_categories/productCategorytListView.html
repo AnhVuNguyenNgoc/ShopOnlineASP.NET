@@ -1,8 +1,7 @@
 ﻿ <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Danh sách loại sản phẫm
-        <small>it all starts here</small>
+     Sản phẫm
     </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
@@ -16,50 +15,64 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Danh sách loại sản phẫm</h3>
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                        title="Collapse">
-                    <i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
         </div>
-     
-            <!-- /.box-header -->
-            <div class="box-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Ngày tạo</th>
-                        <th style="width: 40px">Trạng thái</th>
-                    </tr>
-                    <tr ng-repeat = "items in productCategories">
-                        <td>{{items.ID}}</td>
-                        <!-- Đúng với trong ViewModel á nha  -->
-                        <td>{{items.Name}}</td>
-                        <td>
-                            {{items.CreatedDate}}
-                        </td>
-                        <td><span class="badge bg-red">{{items.Status}}</span></td>
-                    </tr>
 
-                </table>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row" style="margin-bottom: 2%">
+                <div class="col-md-6">
+                    <!-- input-group vào là nó cùng 1 dòng  -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="keyword" placeholder="Bạn hãy nhập tên sản phẫm cần tìm">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" ng-click="search()">Tìm kiếm</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-success" ui-sref="add_product_categories">Thêm mới</button>
+                </div>
             </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 10%">ID</th>
+                            <th style="width: 50%">Tên danh mục</th>
+                            <th style="width: 20%">Ngày tạo</th>
+                            <th style="width: 10%">Trạng thái</th>
+                            <th style="width: 10%">Thao tác</th>
+                        </tr>
+                        <tr ng-repeat="items in productCategories">
+                            <td>{{items.ID}}</td>
+                            <!-- Đúng với trong ViewModel á nha  -->
+                            <td>{{items.Name}}</td>
+                            <td>
+                                {{items.CreatedDate | date :'dd/MM/yyyy hh:mm' }}
+                            </td>
+
+                            <!--//badge bg-red-->
+                            <td>
+                                <span ng-class="{'badge bg-red':items.Status==false ,'badge bg-green':items.Status==true}">
+                                    {{items.Status | statusFilter}}
+                                </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" ui-sref="update_product_categories({id:items.ID})"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
             </div>
         </div>
-        <!-- /.box -->
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getProductCategories(page)"></pager-directive>
+        </div><!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
 
 
 </section>

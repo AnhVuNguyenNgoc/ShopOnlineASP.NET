@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,8 +11,9 @@ namespace ShopOnline.Web.Models
 
         public int ID { get; set; }
 
+    
         public string Name { get; set; }
-
+      
         public string Alias { get; set; }
 
         public string Description { get; set; }
@@ -33,7 +35,7 @@ namespace ShopOnline.Web.Models
 
         public string MetaKeyword { set; get; }
 
-        public string MetaDescription { set; get; }
+        public string MetaDiscription { set; get; }
 
         public bool Status { set; get; }
     }

@@ -13,12 +13,15 @@
 
     function config($stateProvider, $urlRouterProvider) {
 
+
+        $urlRouterProvider.otherwise('/admin');
+
         $stateProvider.state('home', {
             url: "/admin",
             templateUrl: "/app/components/home/homeView.html",
             controller:"homeController"
         });
 
-        $urlRouterProvider.otherwise('/admin');
+      
     }
 })();

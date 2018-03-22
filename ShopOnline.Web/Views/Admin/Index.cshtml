@@ -18,6 +18,10 @@
 
     <!-- Ionicons -->
     @*<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">*@
+   
+    <link href="~/Assets/admin/libs/toastr/build/toastr.css" rel="stylesheet" />
+
+
     <!-- Theme style -->
     <link rel="stylesheet" href="/Assets/admin/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -233,13 +237,13 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
-                            <span>Loại sản phẫm</span>
+                            <span>Sản phẫm</span>
                             <span class="pull-right-container">
                                 <span class="label label-primary pull-right">4</span>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a ui-sref="product_categories"><i class="fa fa-circle-o"></i>Danh sách</a></li>
+                            <li><a ui-sref="product_categories"><i class="fa fa-circle-o"></i>Loại sản phẫm</a></li>
                             <li><a ui-sref="products"><i class="fa fa-circle-o"></i>Sản phẫm</a></li>
                         </ul>
                     </li>
@@ -587,19 +591,26 @@
     <!-- Angular js app -->
     <script src="~/Assets/admin/libs/angular/angular.js"></script>
     <script src="~/Assets/admin/libs/angular-ui-router/release/angular-ui-router.js"></script>
+   
+    <script src="~/Assets/admin/libs/toastr/build/toastr.min.js"></script>
 
     <script src="~/app/shared/modules/shoponline.common.js"></script>
-
+  
     <script src="~/app/shared/service/apiService.js"></script>
+    <script src="~/app/shared/service/notificationService.js"></script>
 
     <script src="~/app/components/products/product.module.js"></script>
-    <script src="~/app/components/product_categories/productCategory.module.js"></script>
+        <script src="~/app/components/product_categories/productCategory.module.js"></script>
+    <script src="~/app/shared/filters/statusFilter.js"></script>
+    <script src="~/app/shared/directive/pagerDirective.js"></script>
 
     <script src="~/app/app.js"></script>
+
     <script src="~/app/components/products/productListController.js"></script>
 
-    <script src="~/app/components/product_categories/productCategoriesListController.js"></script>
-
+    <script src="~/app/components/product_categories/productCategoryListController.js"></script>
+    <script src="~/app/components/product_categories/productCategoryAddController.js"></script>
+    <script src="~/app/components/product_categories/productCategoryUpdateController.js"></script>
     <script src="~/app/components/home/homeController.js"></script>
 </body>
 </html>
