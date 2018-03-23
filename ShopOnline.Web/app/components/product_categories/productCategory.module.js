@@ -1,6 +1,6 @@
 ﻿/// <reference path="../Assets/admin/libs/angular/angular.js" />
 
-(function (app) {
+(function () {
 
     //Khởi tạo config module shoponline.productCategory
     angular.module('shoponline.productCategory', ['shoponline.common']).config(config);

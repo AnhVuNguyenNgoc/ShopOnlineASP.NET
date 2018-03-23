@@ -19,12 +19,12 @@ namespace ShopOnline.Data.Infrastructure
         void Update(T entity);
 
         // Marks an entity to be removed
-        void Delete(T entity);
+        T Delete(T entity);
 
         // Marks an entity to be removed
-        void Delete(int id);
+        T Delete(int id);
 
-
+      
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);// Func<> DELEGATE
 

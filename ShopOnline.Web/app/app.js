@@ -1,6 +1,6 @@
 ﻿/// <reference path="../Assets/admin/libs/angular/angular.js" />
 
-(function (app) {
+(function () {
 
     angular.module('shoponline',
         ['shoponline.products',
@@ -12,7 +12,6 @@
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function config($stateProvider, $urlRouterProvider) {
-
 
         $urlRouterProvider.otherwise('/admin');
 

@@ -13,7 +13,7 @@ namespace ShopOnline.Service
     {
         ProductCategory Add(ProductCategory productCategory);
         void Update(ProductCategory productCategory);
-        void Delete(int id);
+        ProductCategory Delete(int id);
 
         IEnumerable<ProductCategory> GetAll();
         //Tìm kiếm vs getall thông thường luôn . khỏi cần tách ra func search riêng chi 
@@ -51,9 +51,9 @@ namespace ShopOnline.Service
              _productCategoryRepository.Update(productCategory);
         }
 
-        public void Delete(int id)
+        public ProductCategory Delete(int id)
         {
-            _productCategoryRepository.Delete(id);
+            return _productCategoryRepository.Delete(id);
         }
 
         public IEnumerable<ProductCategory> GetAll()

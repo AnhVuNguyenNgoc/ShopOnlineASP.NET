@@ -29,14 +29,17 @@
                         </span>
                     </div><!-- /input-group -->
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <button class="btn btn-success" ui-sref="add_product_categories">Thêm mới</button>
+
+                    <button class="btn btn-danger" ng-click="deleteMultiCategory()" id="btnDelete" disabled>Xóa nhiều</button>
                 </div>
-            </div>
+                </div>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
+                            <th><label><input type="checkbox" name="all" ng-click="selectall()" /></label></th>
                             <th style="width: 10%">ID</th>
                             <th style="width: 50%">Tên danh mục</th>
                             <th style="width: 20%">Ngày tạo</th>
@@ -44,6 +47,7 @@
                             <th style="width: 10%">Thao tác</th>
                         </tr>
                         <tr ng-repeat="items in productCategories">
+                            <td><input type="checkbox" ng-model="items.checked"name="all" /></td>
                             <td>{{items.ID}}</td>
                             <!-- Đúng với trong ViewModel á nha  -->
                             <td>{{items.Name}}</td>
@@ -59,7 +63,7 @@
                             </td>
                             <td>
                                 <button class="btn btn-sm btn-primary" ui-sref="update_product_categories({id:items.ID})"><i class="fa fa-pencil"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+                                <button class="btn btn-sm btn-danger" ng-click="deleteCategory(items.ID)"><i class="fa fa-trash-o"></i></button>
                             </td>
                         </tr>
 

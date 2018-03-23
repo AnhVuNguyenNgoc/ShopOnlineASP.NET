@@ -14,9 +14,20 @@
         return {
             get: get,
             post: post,
-            put: put
+            put: put,
+            del:del
         }
+        function del(url, params, success, fail) {
 
+            $http.delete(url, params).then(function (result) {
+
+                //trả về result chứ . Để bên thằng controller nó lấy result.data
+                success(result);
+
+            }, function (error) {
+                fail(error);
+            });
+        }
 
         function get(url, params, success, fail) {
 

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 
 namespace ShopOnline.Web.API
@@ -84,7 +85,7 @@ namespace ShopOnline.Web.API
 
                 var listProductCategoryViewModel = Mapper.Map<ProductCategory, ProductCategoryViewModel>(listProductCategory);
 
-                HttpResponseMessage repsonse = request.CreateResponse(HttpStatusCode.OK, listProductCategoryViewModel); 
+                HttpResponseMessage repsonse = request.CreateResponse(HttpStatusCode.OK, listProductCategoryViewModel);
 
                 return repsonse;
             }
@@ -126,7 +127,7 @@ namespace ShopOnline.Web.API
         }
 
 
-        [AcceptVerbs("GET", "POST","PUT")]
+        [AcceptVerbs("GET", "POST", "PUT")]
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
@@ -160,5 +161,66 @@ namespace ShopOnline.Web.API
             }
             );
         }
+
+         [AcceptVerbs("GET", "POST", "PUT")]
+        [Route("delete")]
+        [HttpDelete]
+        //[AllowAnonymous]
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var oldProductCategory = _productCategoryService.Delete(id);
+
+                    _productCategoryService.SaveChanges();
+
+                    var DataResponse = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
+
+                    response = request.CreateResponse(HttpStatusCode.Created, DataResponse);
+                }
+                return response;
+            }
+            );
+        }
+
+         [AcceptVerbs("GET", "POST", "PUT")]
+
+         [Route("deletemulti")]
+         [HttpDelete]
+         //[AllowAnonymous]
+         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)//json
+         {
+             return CreateHttpResponse(request, () =>
+             {
+                 HttpResponseMessage response = null;
+                 if (!ModelState.IsValid)
+                 {
+                     response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                 }
+                 else
+                 {
+                     var listProductCategories = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategories);
+
+                     foreach (var id in listProductCategories)
+                     {
+                         var oldProductCategory = _productCategoryService.Delete(id);
+                     }
+                 
+                     _productCategoryService.SaveChanges();
+
+                     response = request.CreateResponse(HttpStatusCode.Created, listProductCategories.Count);
+                 }
+                 return response;
+             }
+             );
+         }
+
     }
 }
